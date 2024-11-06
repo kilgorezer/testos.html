@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    task-bar {
+      display: block;
+      float: left;
+      position: fixed;
+      padding: 0;
+      margin: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 32px;
+      background-color: #000000cc;
+      backdrop-filter: blur(2px);
+      user-select: none;
+      white-space: nowrap;
+      z-index: 100000;
+    }
+    html {background: grey;}
+    body {
+      display: block;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      /*background: url('https://web.archive.org/web/20221028203938im_/https://zerius-learning.w3spaces.com/KnottyPine.jpg');*/
+      overflow: hidden;
+      font-family: "Roboto Condensed";
+      font-weight: 350;
+    }
+    #draggable {
+      position: absolute;
+      z-index: -1;
+    }
+    task- {
+      display: inline-block;
+      float: left;
+      overflow: hidden;
+      width: 176px;
+      height: 32px;
+      display: block;
+      margin-right: 5px;
+      background: #ffffff11;
+      font-size: 28px;
+      border-right: 4px solid #ffffff00;
+      white-space: nowrap;
+    }
+    task- img {
+      width: 32px;
+      aspect-ratio: 1/1;
+      padding-right: 2px;
+      float: left;
+    }
+    start-menu img {
+      width: 28px;
+      aspect-ratio: 1/1;
+      border-radius: 4px;
+    }
+    start-menu {
+      display: inline-block;
+      position: relative;
+      top: -2px;
+      margin: 2px;
+      margin-right: 5px;
+      width: 28px;
+      height: 28px;
+    }
+    start-popup {
+      user-select: none;
+      position: fixed;
+      display: none;
+      z-index: 100001;
+      bottom: 32px;
+      width: 265px;
+      left: -265px;
+      height: 500px;
+      padding-left: 15px;
+      background: color-mix(in srgb, aliceblue, transparent 50%);
+      backdrop-filter: blur(3px);
+      border-radius: 15px;
+      font-size: 20px;
+    }
+    start-popup[active-] {
+      left: -15px;
+      display: block;
+      animation-name: start-add;
+      animation-duration: 0.125s;
+      animation-timing-function: linear;
+    }
+    start-popup[removal-] {
+      animation-name: start-remove;
+      animation-duration: 0.14s;
+      animation-timing-function: linear;
+    }
+    task-[focus-] {
+      background: #ffffff33;
+    }
+    task-:hover {
+      background: #ffffff55;
+    }
+    taskbar-items {
+      position: relative;
+      display: inline-block;
+      height: 32px;
+      width: fit-content;
+    }
+    desktop-,windows-,hide-temp,img[desktop-background] {
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+    hide-temp {
+      z-index: 100001;
+      background: color-mix(in srgb, aliceblue, transparent 50%);
+      backdrop-filter: blur(25px);
+    }
+    loading- {
+      width: 150px;
+      height: 150px;
+      border: 50px dotted black;
+      display: block;
+      position:absolute;
+      top:50%;
+      left:50%;
+      margin-left:-100px;
+      margin-top:-100px;
+      border-radius: 200px;
+      animation-name: spin;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      background: #00000000;
+    }
+    img[unloaded-] {
+      display: none;
+    }
+    hide-temp[unload-] {
+      animation-name: unload;
+      animation-duration: 8s;
+      animation-timing-function: linear;
+    }
+    img[desktop-background][load-] {
+      animation-name: load;
+      animation-duration: 8s;
+      animation-timing-function: linear;
+    }
+
+    @keyframes unloadold {
+      0% {left: 0; top: 0;}
+      50% {left: 100vw; top: 100vh;}
+      100% {left: 100vw; top: 100vh;}
+    }
+    @keyframes loadold {
+      0% {left: -100vw; top: -100vh;}
+      50% {left: 0; top: 0;}
+      100% {left: 0; top: 0;}
+    }
+    @keyframes unload {
+      0% {opacity: 1;}
+      25% {opacity: 0.3;}
+      50% {opacity: 0;}
+      100% {opacity: 0;}
+    }
+    @keyframes load {
+      0% {opacity: 0;}
+      25% {opacity: 0.7;}
+      50% {opacity: 1;}
+      100% {opacity: 1;}
+    }
+    @keyframes spin {
+      from {transform: rotate(0deg);}
+      to {transform: rotate(360deg);}
+    }
+    @keyframes start-add {
+      from {left: -265px;}
+      to {left: -15px;}
+    }
+    @keyframes start-remove {
+      from {left: -15px;}
+      to {left: -265px;}
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;">
+  <img desktop-background unloaded-/>
+  <desktop-></desktop->
+  <windows-></windows->
+  <task-bar>
+    <start-menu><img src="https://web.archive.org/web/20221028203938im_/https://zerius-learning.w3spaces.com/KnottyPine.jpg"/></start-menu><taskbar-items><task-><img src="https://tpviewer.kilgorezer.com/settings.png"/>Task 1 5435435435435345</task-><task- focus-><img src="https://tpviewer.kilgorezer.com/settings.png"/>Task 2</task-><task-><img src="https://tpviewer.kilgorezer.com/settings.png"/>Task 3</task-></taskbar-items>
+  </task-bar>
+  <start-popup>Start Menu</start-popup>
+  <hide-temp><loading-></loading-></hide-temp>
+  <script>
+    var tasks = function() {
+      return document.getElementsByTagName('taskbar-items')[0].children;
+    }
+    tasks.add = function(i) {
+      document.getElementsByTagName('taskbar-items')[0].appendChild(i);
+    }
+    var desktopbackground = 'https://web.archive.org/web/20221028203938im_/https://zerius-learning.w3spaces.com/KnottyPine.jpg';
+    document.querySelector("img[desktop-background]").src = desktopbackground;
+    document.querySelector("img[desktop-background]").onload = function() {
+      document.querySelector("img[desktop-background]").removeAttribute('unloaded-');
+      document.querySelector("img[desktop-background]").setAttribute('load-', '');
+      document.getElementsByTagName('hide-temp')[0].setAttribute('unload-', '');
+      setTimeout(function(){
+        document.getElementsByTagName('hide-temp')[0].remove();
+        document.querySelector("img[desktop-background]").removeAttribute('load-');
+      },4000);
+    };
+    document.getElementsByTagName('start-menu')[0].onclick = function() {
+      var menu = document.getElementsByTagName('start-popup')[0];
+      if(menu.getAttribute('active-')) {
+        menu.setAttribute('removal-', '');
+        setTimeout(function(){
+          menu.removeAttribute('removal-');
+          menu.removeAttribute('active-');
+        }, 125);
+      }else{
+        menu.setAttribute('active-', '!');
+      }
+    };
+  </script>
+</body>
+</html>
